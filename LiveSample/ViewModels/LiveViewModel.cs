@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -8,6 +9,8 @@ using Messages;
 using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
 using TinyMvvm;
+
+
 
 namespace LiveSample.ViewModels
 {
@@ -81,8 +84,8 @@ namespace LiveSample.ViewModels
 
             hub.On<object>(nameof(CommentMessage), (message) =>
             {
-                var json = message.ToString();
-                var obj = JsonConvert.DeserializeObject<CommentMessage>(json);
+                var json = message.ToString(); 
+                 var obj = JsonConvert.DeserializeObject<CommentMessage>(json);
 
                 Comments.Insert(0, obj);
             });
