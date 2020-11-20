@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:ViewBase xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
+               xmlns:vm="clr-namespace:LiveSample.ViewModels"
+             x:Class="LiveSample.Views.MainView" x:TypeArguments="vm:MainViewModel" Title="Welcome" Shell.NavBarIsVisible="False" BackgroundColor="Navy">
+      <StackLayout Padding="10" Spacing="50">
+          <Label Text="Welcome" FontSize="72" HorizontalOptions="Center" FontAttributes="Bold" TextColor="White" />
+          <Grid VerticalOptions="Center">
+              <Rectangle StrokeThickness="2" Stroke="Black" Fill="Black" StrokeLineCap="Round" RadiusX="20" RadiusY="20" Opacity="0.7" />
+          <StackLayout Padding="20" Spacing="20">
+              <Label TextColor="White" Text="Enter your name to connect to live feed!" />
+          <Entry Text="{Binding Name}" Placeholder="Name" TextColor="Black" />
+          <Button Text="Connect to live feed" Background="White" TextColor="Black" FontAttributes="Bold" Command="{Binding Start, Mode=OneTime}" />
+              </StackLayout>
+              </Grid>
+    </StackLayout>
+</mvvm:ViewBase>

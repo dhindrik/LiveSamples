@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.SignalRService" Version="1.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.AspNetCore.SignalR.Protocols.MessagePack.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.SignalR.Common.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.SignalR.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.SignalR.Management.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.SignalR.Serverless.Protocols.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Host.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.SignalR.Protocols.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Build.Framework.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.Http.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.DotNet.PlatformAbstractions.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Build.Utilities.Core.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Host.Storage.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Azure.WebJobs.Extensions.SignalRService.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.IdentityModel.JsonWebTokens.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.Extensions.DependencyModel.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.IdentityModel.Logging.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.IdentityModel.Tokens.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Newtonsoft.Json.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\NCrontab.Signed.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Newtonsoft.Json.Bson.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\System.IdentityModel.Tokens.Jwt.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Messages.pdb" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Microsoft.WindowsAzure.Storage.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Messages.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\function.deps.json" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Functions.pdb" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\Functions.dll" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\GetInfo\function.json" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\AddMessage\function.json" />
+    <None Remove="obj\Release\netcoreapp3.1\PubTmp\Out\bin\extensions.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Messages\Messages.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

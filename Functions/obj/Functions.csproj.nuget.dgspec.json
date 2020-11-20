@@ -1,0 +1,129 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/daniel/Source/samples/LiveSample/Functions/Functions.csproj": {}
+  },
+  "projects": {
+    "/Users/daniel/Source/samples/LiveSample/Functions/Functions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniel/Source/samples/LiveSample/Functions/Functions.csproj",
+        "projectName": "Functions",
+        "projectPath": "/Users/daniel/Source/samples/LiveSample/Functions/Functions.csproj",
+        "packagesPath": "/Users/daniel/.nuget/packages/",
+        "outputPath": "/Users/daniel/Source/samples/LiveSample/Functions/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniel/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "/Users/daniel/Source/samples/LiveSample/Messages/Messages.csproj": {
+                "projectPath": "/Users/daniel/Source/samples/LiveSample/Messages/Messages.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Azure.WebJobs.Extensions.SignalRService": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
+            "Microsoft.NET.Sdk.Functions": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/daniel/Source/samples/LiveSample/Messages/Messages.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniel/Source/samples/LiveSample/Messages/Messages.csproj",
+        "projectName": "Messages",
+        "projectPath": "/Users/daniel/Source/samples/LiveSample/Messages/Messages.csproj",
+        "packagesPath": "/Users/daniel/.nuget/packages/",
+        "outputPath": "/Users/daniel/Source/samples/LiveSample/Messages/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniel/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

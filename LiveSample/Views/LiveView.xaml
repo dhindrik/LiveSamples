@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:ViewBase xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
+               xmlns:vm="clr-namespace:LiveSample.ViewModels"
+             x:Class="LiveSample.Views.LiveView" x:TypeArguments="vm:LiveViewModel" Visual="Material">
+  <Grid RowDefinitions="Auto, Auto, *">
+      <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="Center">
+          <Label Text="{Binding HomeGoal}" FontSize="72" />
+          <Label Text="-"  FontSize="72" />
+          <Label Text="{Binding AwayGoal}" FontSize="72" />
+      </StackLayout>
+      <StackLayout Grid.Row="1">
+          <BoxView HeightRequest="1" Color="Gray" />
+     
+      <Editor Margin="10" Text="{Binding Text}" Placeholder="Comment" TextColor="Black"></Editor>
+         
+           <Button Margin="10" Text="Send" Command="{Binding Send}" />
+           <BoxView HeightRequest="1" Color="Gray" />
+          </StackLayout>
+      <CollectionView Grid.Row="2" ItemsSource="{Binding Comments}">
+          <CollectionView.ItemTemplate>
+              <DataTemplate>
+                  <StackLayout Padding="10">
+                      <Label Text="{Binding Name}" FontSize="Micro" FontAttributes="Bold" />
+                      <Label Text="{Binding Text}" />
+                      <BoxView HeightRequest="1" Color="Gray" />
+                  </StackLayout>
+              </DataTemplate>
+          </CollectionView.ItemTemplate>
+          </CollectionView>
+  </Grid>
+</mvvm:ViewBase>

@@ -1,0 +1,124 @@
+﻿@using Newtonsoft.Json;
+@using Microsoft.AspNetCore.SignalR.Client;
+@using Messages;
+
+@page "/"
+
+<h1>Live</h1>
+
+<div class="row">
+    <div class="col-sm">
+        <h2>Updates</h2>
+        <h3>
+            Home goals
+        </h3>
+        <input @bind-value="@homeGoal" />
+        <h3>
+            Away goals
+        </h3>
+        <input @bind="@awayGoal" />
+
+        <button @onclick="Click">Send</button>
+        <h3>Comment</h3>
+        <input @bind="@message" />
+
+        <button @onclick="SendMessage">Send</button>
+    </div>
+    <div class="col-sm">
+        <h2>Comments</h2>
+        @foreach(var comment in comments)
+        {
+            <b>@comment.Name</b>
+            <p>@comment.Text</p>
+        }
+    </div>
+</div>
+
+@code
+{
+    HttpClient client;
+    HubConnection hub;
+    private List<CommentMessage> comments = new List<CommentMessage>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        client = new HttpClient();
+
+        var result = await client.GetStringAsync("https://livesample.azurewebsites.net/api/GetInfo");
+        var info = JsonConvert.DeserializeObject<ConnectionInfo>(result);
+
+        var connectionBuilder = new HubConnectionBuilder();
+        connectionBuilder.WithUrl(info.Url, (Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionOptions obj) =>
+        {
+            obj.AccessTokenProvider = () => Task.Run(() => info.AccessToken);
+        });
+
+        hub = connectionBuilder.Build();
+
+
+        hub.On<object>(nameof(CommentMessage), (message) =>
+        {
+            var json = message.ToString();
+            var obj = JsonConvert.DeserializeObject<CommentMessage>(json);
+
+            comments.Insert(0, obj);
+
+            StateHasChanged();
+        });
+
+        await hub.StartAsync();
+    }
+
+    string message;
+    string homeGoal = "0";
+    string awayGoal = "0";
+
+    private void SendMessage(MouseEventArgs e)
+    {
+        Task.Run(async () =>
+        {
+            Console.WriteLine(message);
+            var comment = new CommentMessage("Live Update", message);
+            var json = JsonConvert.SerializeObject(comment);
+
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            var result = await client.PostAsync("https://livesample.azurewebsites.net/api/AddMessage", content);
+
+            message = string.Empty;
+
+            StateHasChanged();
+        });
+    }
+
+    private void Click(MouseEventArgs e)
+    {
+        Console.WriteLine(message);
+        Console.WriteLine(homeGoal);
+        Console.WriteLine(awayGoal);
+
+        var result = new ResultMessage(int.Parse(homeGoal), int.Parse(awayGoal));
+
+
+        message = string.Empty;
+
+        Task.Run(async () =>
+        {
+            var json = JsonConvert.SerializeObject(result);
+
+            Console.WriteLine(json);
+
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+            await client.PostAsync("https://livesample.azurewebsites.net/api/AddMessage", content);
+
+
+
+
+            // await hub.SendAsync("resultUpdate", result);
+
+        });
+    }
+}
